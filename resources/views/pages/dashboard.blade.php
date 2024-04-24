@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
+            <div class="col-lg-8 py-3">
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <p class="text-center m-0">{{ session('success') }}</p>
@@ -16,9 +16,9 @@
                 @endif
 
                 @if (auth()->check())
-                    <p class="my-4">
+                    <h2 class="my-4">
                         Welcome, {{ ucwords(auth()->user()->name) }}
-                    </p>
+                    </h2>
                 @endif
 
             </div>
