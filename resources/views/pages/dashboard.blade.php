@@ -39,7 +39,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title mb-4">All Notes</h5>
                                     <a href="{{ route('notes.index') }}" class="btn btn-primary">
-                                        View All Notes <i class="fas fa-arrow-right ms-1"></i>
+                                        View Notes <i class="fas fa-arrow-right ms-1"></i>
                                     </a>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title mb-4">Create New Note</h5>
                                     <a href="{{ route('notes.create') }}" class="btn btn-success">
-                                        Create New Note <i class="fas fa-plus ms-1"></i>
+                                        New Note <i class="fas fa-plus ms-1"></i>
                                     </a>
                                 </div>
                             </div>
