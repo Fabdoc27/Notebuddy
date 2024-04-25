@@ -6,11 +6,19 @@ use App\Models\Note;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller {
+    public function index( Request $request ) {
+        $searchWord = $request->input( 'searchWord', '' );
 
-    public function index() {
-        $notes = auth()->user()->notes()->latest()->paginate( 6 );
+        $results = auth()->user()->notes();
 
-        return view( 'notes.index', compact( 'notes' ) );
+        if ( $searchWord ) {
+            $results = $results->where( 'title', 'like', "%$searchWord%" )
+                ->orWhere( 'content', 'like', "%$searchWord%" );
+        }
+
+        $notes = $results->latest()->paginate( 6 );
+
+        return view( 'notes.index', compact( 'notes', 'searchWord' ) );
     }
 
     public function create() {
@@ -29,7 +37,7 @@ class NoteController extends Controller {
             'content' => $request->content,
         ] );
 
-        return redirect()->route( 'notes.index' )->with( 'success', 'Note created successfully!' );
+        return redirect()->route( 'notes.index' )->with( 'success', 'Note created successfully' );
     }
 
     public function show( Note $note ) {
@@ -37,10 +45,18 @@ class NoteController extends Controller {
     }
 
     public function edit( Note $note ) {
+        if ( $note->user_id !== auth()->id() ) {
+            abort( 403, 'Unauthorized action' );
+        }
+
         return view( 'notes.edit', compact( 'note' ) );
     }
 
     public function update( Request $request, Note $note ) {
+        if ( $note->user_id !== auth()->id() ) {
+            abort( 403, 'Unauthorized action' );
+        }
+
         $request->validate( [
             'title'   => 'nullable|string|max:255',
             'content' => 'nullable|string',
@@ -53,10 +69,14 @@ class NoteController extends Controller {
 
         Note::where( 'id', $note->id )->update( $data );
 
-        return redirect()->route( 'notes.index' )->with( 'success', 'Note updated successfully!' );
+        return redirect()->route( 'notes.index' )->with( 'success', 'Note updated successfully.' );
     }
 
     public function destroy( Note $note ) {
+        if ( $note->user_id !== auth()->id() ) {
+            abort( 403, 'Unauthorized action' );
+        }
+
         $note->delete();
 
         return redirect()->route( 'notes.index' )->with( 'success', 'Note deleted successfully.' );

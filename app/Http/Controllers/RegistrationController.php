@@ -31,6 +31,6 @@ class RegistrationController extends Controller {
 
         auth()->attempt( $request->only( 'email', 'password' ) );
 
-        return redirect( 'dashboard' )->with( 'success', 'Registration Successful' );
+        return redirect()->route( 'dashboard' )->with( 'success', 'Registration Successful' );
     }
 }

@@ -8,6 +8,7 @@
     <div class="navbar-nav">
 
         <div class="nav-item text-nowrap d-flex justify-content-center align-items-center gap-2 px-3">
+
             @auth
                 <a class="nav-link fst-italic fw-medium text-white-50" href="#">{{ ucwords(auth()->user()->name) }}
                 </a>
@@ -18,11 +19,6 @@
                 </form>
             @endauth
 
-            @guest
-                <a class="nav-link fw-medium" aria-current="page" href="{{ route('login') }}"> Login</a>
-
-                <a class="nav-link fw-medium" aria-current="page" href="{{ route('register') }}">Registration</a>
-            @endguest
         </div>
     </div>
 </header>

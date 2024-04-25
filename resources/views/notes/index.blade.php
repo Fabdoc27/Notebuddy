@@ -15,6 +15,20 @@
         @endif
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form action="{{ route('notes.index') }}" method="GET" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" name="searchWord" class="form-control" placeholder="Search notes..."
+                            value="{{ old('searchTerm', '') }}">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="container mt-4">
         @if ($notes->isEmpty())
             <div class="alert alert-info" role="alert">
