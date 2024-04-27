@@ -41,6 +41,9 @@ class NoteController extends Controller {
     }
 
     public function show( Note $note ) {
+        $note->created_at = $note->created_at->timezone( 'Asia/Dhaka' );
+        $note->updated_at = $note->updated_at->timezone( 'Asia/Dhaka' );
+
         return view( 'notes.show', compact( 'note' ) );
     }
 

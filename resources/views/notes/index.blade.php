@@ -42,7 +42,18 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="card-title">{{ $note->title }}</h5>
-                            <p class="card-text">{{ $note->content }}</p>
+
+                            <div class="mb-3 time">
+                                <p class="text-xs text-muted m-0">Created:
+                                    {{ $note->created_at->format('d M Y, h:i A') }}
+                                </p>
+                                <p class="text-xs text-muted m-0">Last Updated:
+                                    {{ $note->updated_at->format('d M Y, h:i A') }}
+                                </p>
+                            </div>
+
+                            <p class="card-text ">{{ $note->content }}</p>
+
                             <div class="d-flex gap-3 align-items-center">
                                 <a href="{{ route('notes.show', $note) }}" class="btn btn-outline-primary"
                                     title="View Note">
