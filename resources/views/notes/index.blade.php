@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    <title>Note Buddy | All Notes</title>
+@endsection
+
 @section('content')
     <div class="my-4">
         @if (session('success'))
