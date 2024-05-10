@@ -12,7 +12,7 @@ return new class extends Migration {
         Schema::create( 'notes', function ( Blueprint $table ) {
             $table->id();
             $table->unsignedBigInteger( 'user_id' );
-            $table->foreign( 'user_id' )->references( 'id' )->onUpdate( 'cascade' )->on( 'users' )->onDelete( 'cascade' );
+            $table->foreign( 'user_id' )->references( 'id' )->on( 'users' )->restrictOnDelete()->cascadeOnUpdate();
             $table->string( 'title' )->nullable();
             $table->text( 'content' );
             $table->timestamp( 'created_at' )->useCurrent();
