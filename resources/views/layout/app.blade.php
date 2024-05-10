@@ -11,27 +11,23 @@
 
     {{-- bootstrap css --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
     {{-- font awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-
+    {{-- custom css --}}
     <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
 
 <body>
 
     @include('components.header')
-
     <div class="container-fluid">
         <div class="row">
             @include('components.sidebar')
-
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 @yield('content')
             </main>
         </div>
     </div>
-
     @include('components.footer')
 
     {{-- bootstrap js --}}

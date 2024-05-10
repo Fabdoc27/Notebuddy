@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    {{-- alert message --}}
     <div class="my-4">
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -18,7 +19,7 @@
             </div>
         @endif
     </div>
-
+    {{-- search box --}}
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -32,14 +33,13 @@
             </div>
         </div>
     </div>
-
     <div class="container mt-4">
         @if ($notes->isEmpty())
             <div class="alert alert-info" role="alert">
                 You have no notes yet.
             </div>
         @endif
-
+        {{-- notes card --}}
         <div class="row">
             @foreach ($notes as $note)
                 <div class="col-md-4">
@@ -81,9 +81,7 @@
                 </div>
             @endforeach
         </div>
-
         <a href="{{ route('notes.create') }}" class="btn btn-primary my-2">Create Note</a>
-
         {{-- Pagination --}}
         <div>
             {{ $notes->links() }}
