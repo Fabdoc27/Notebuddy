@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LogoutController extends Controller {
+class LogoutController extends Controller
+{
     /**
      * Handle the incoming request.
      */
-    public function __invoke( Request $request ) {
+    public function __invoke(Request $request)
+    {
         auth()->logout();
-        return redirect()->route( 'dashboard' );
+
+        return redirect()->route('dashboard');
     }
 }
