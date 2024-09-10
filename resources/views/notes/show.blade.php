@@ -1,8 +1,6 @@
 @extends('layout.app')
 
-@section('title')
-    <title>Note Buddy | {{ $note->title }}</title>
-@endsection
+@section('title', $note->title)
 
 @section('content')
     <div class="container my-5">

@@ -1,8 +1,6 @@
 @extends('layout.app')
 
-@section('title')
-    <title>Note Buddy | All Notes</title>
-@endsection
+@section('title', 'All Notes')
 
 @section('content')
     {{-- alert message --}}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
@@ -13,5 +14,6 @@ Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::view('/', 'pages.dashboard')->name('dashboard');
+    Route::resource('users', ProfileController::class)->only('edit', 'update');
     Route::resource('notes', NoteController::class);
 });

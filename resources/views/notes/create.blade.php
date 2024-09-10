@@ -1,8 +1,6 @@
 @extends('layout.app')
 
-@section('title')
-    <title>Note Buddy | New Note</title>
-@endsection
+@section('title', 'Add Note')
 
 @section('content')
     <div class="container my-5">

@@ -1,8 +1,6 @@
 @extends('layout.app')
 
-@section('title')
-    <title>NoteBuddy | Dashboard</title>
-@endsection
+@section('title', 'Dashboard')
 
 @section('content')
     <div class="container" style="height: 70dvh">

@@ -8,7 +8,8 @@
     <div class="navbar-nav">
         <div class="nav-item text-nowrap d-flex justify-content-center align-items-center gap-2 px-3">
             @auth
-                <a class="nav-link fst-italic fw-medium text-white-50" href="#">{{ ucwords(auth()->user()->name) }}
+                <a class="nav-link fst-italic fw-medium text-white-50"
+                    href="{{ route('users.edit', auth()->user()) }}">{{ ucwords(auth()->user()->name) }}
                 </a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
