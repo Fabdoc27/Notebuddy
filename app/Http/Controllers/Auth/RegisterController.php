@@ -21,7 +21,7 @@ class RegisterController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:60'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'confirmed', Password::min(6)->numbers()->symbols()->mixedCase()],
+            'password' => ['required', 'confirmed', Password::min(8)->numbers()->symbols()->mixedCase()->uncompromised()],
         ]);
 
         User::create([
@@ -32,6 +32,6 @@ class RegisterController extends Controller
 
         Auth::attempt($request->only('email', 'password'));
 
-        return redirect('dashboard')->with(['success' => 'Registration Successful']);
+        return to_route('dashboard')->with(['success' => 'Registration Successful']);
     }
 }

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container h-100">
+    <div class="container" style="height: 70dvh">
         <div class="row justify-content-center my-5">
             <div class="col-lg-8">
                 @if (session('success'))
@@ -58,8 +58,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

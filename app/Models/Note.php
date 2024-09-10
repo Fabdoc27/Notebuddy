@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Note extends Model
 {
-    protected $fillable = ['user_id', 'title', 'content'];
+    protected $fillable = [
+        'user_id',
+        'title',
+        'content',
+    ];
 
     public function user(): BelongsTo
     {
