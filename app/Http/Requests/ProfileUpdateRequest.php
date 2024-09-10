@@ -35,10 +35,19 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             function (Validator $validator) {
+                // Check if the user is trying to change the password
                 if ($this->filled('password') && ! Hash::check($this->input('current_password'), $this->user()->password)) {
                     $validator->errors()->add('current_password', 'The provided current password is incorrect');
                 }
             },
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        if (! $this->filled('password')) {
+            // Removes the password field if not provided
+            $this->request->remove('password');
+        }
     }
 }

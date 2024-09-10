@@ -32,6 +32,6 @@ class RegisterController extends Controller
 
         Auth::attempt($request->only('email', 'password'));
 
-        return to_route('dashboard')->with(['success' => 'Registration Successful']);
+        return to_route('dashboard')->with(['success' => 'Registration Successful.']);
     }
 }

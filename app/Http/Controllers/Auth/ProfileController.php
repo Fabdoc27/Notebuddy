@@ -23,12 +23,8 @@ class ProfileController extends Controller
     {
         $validated = $request->validated();
 
-        if (empty($validated['password'])) {
-            unset($validated['password']);
-        }
-
         $user->updateOrFail($validated);
 
-        return to_route('dashboard')->with(['success' => 'Profile Updated Successfully']);
+        return to_route('dashboard')->with(['success' => 'Profile Updated Successfully.']);
     }
 }

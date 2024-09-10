@@ -25,7 +25,7 @@ class AuthController extends Controller
             return redirect()->intended(route('dashboard'));
         }
 
-        return back()->with(['error' => 'Invalid Login Details']);
+        return back()->with(['error' => 'Invalid Login Details.']);
     }
 
     public function destroy()
