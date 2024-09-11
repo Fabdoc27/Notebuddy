@@ -3,10 +3,10 @@
 @section('title', $note->title)
 
 @section('content')
-    <div class="container my-5">
-        <div class="row justify-content-center align-items-center">
+    <div class="container" style="height: 75dvh">
+        <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card p-3">
                     <div class="card-header">
                         <h5 class="card-title">{{ $note->title }}</h5>
                     </div>

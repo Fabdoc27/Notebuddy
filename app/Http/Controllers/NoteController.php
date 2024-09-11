@@ -19,14 +19,13 @@ class NoteController extends Controller
     {
         $searchWord = $request->input('searchWord', '');
 
-        $results = auth()->user()->notes();
-
-        if ($searchWord) {
-            $results = $results->where('title', 'like', "%$searchWord%")
-                ->orWhere('content', 'like', "%$searchWord%");
-        }
-
-        $notes = $results->latest()->paginate(6);
+        $notes = auth()->user()->notes()
+            ->when($searchWord, function ($query) use ($searchWord) {
+                $query->where('title', 'like', "%$searchWord%")
+                    ->orWhere('content', 'like', "%$searchWord%");
+            })
+            ->latest()
+            ->paginate(6);
 
         return view('notes.index', compact('notes', 'searchWord'));
     }

@@ -14,6 +14,6 @@ Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::view('/', 'pages.dashboard')->name('dashboard');
-    Route::resource('users', ProfileController::class)->only('edit', 'update');
+    Route::resource('profiles', ProfileController::class)->only('edit', 'update');
     Route::resource('notes', NoteController::class);
 });

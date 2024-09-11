@@ -19,11 +19,11 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProfileUpdateRequest $request, User $user)
+    public function update(ProfileUpdateRequest $request, User $profile)
     {
         $validated = $request->validated();
 
-        $user->updateOrFail($validated);
+        $profile->updateOrFail($validated);
 
         return to_route('dashboard')->with(['success' => 'Profile Updated Successfully.']);
     }

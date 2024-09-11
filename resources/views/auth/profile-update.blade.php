@@ -2,13 +2,12 @@
 
 @section('title', 'Update Profile')
 
-
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center align-content-center" style="height: 75dvh">
             <div class="col-lg-10 card shadow mt-5 p-5">
 
-                <form action="{{ route('users.update', auth()->user()) }}" method="POST">
+                <form action="{{ route('profiles.update', auth()->user()) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <h2 class="text-center">Update Profile</h2>
